@@ -1,13 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PortadaComponent } from './components/portada/portada.component';
+import { AppComponent } from './components/main/app.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { UserComponent } from './components/user/user.component';
 
 
 const routes: Routes = [
   { path: '', component: PortadaComponent },
-  { path: 'login', component: LoginComponent }
-  // { path: '**', component: HomeComponent }
+  { path: 'main', component: AppComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'user', component: UserComponent }
 ];
 
 @NgModule({

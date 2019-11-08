@@ -1,0 +1,23 @@
+<app-header></app-header>
+<form [formGroup]="datosRegistro" class="form-signin">
+    <img class="mb-4" src="../../../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Introduce tus datos</h1>
+
+    <label for="Email" class="sr-only">Dirección de correo</label>
+    <input type="email" formControlName="Email" class="form-control" placeholder="Dirección de correo" required="" autofocus="">
+    
+    <label for="Pass" class="sr-only">Contraseña</label>
+    <input type="pass" formControlName="Pass" class="form-control" placeholder="Contraseña" required="">
+    
+    <label for="Name" class="sr-only">Nombre</label>
+    <input type="text" formControlName="Name" class="form-control" placeholder="Nombre" required="">
+    
+    <label for="Apellidos" class="sr-only">Apellidos</label>
+    <input type="text" formControlName="Apellidos" class="form-control" placeholder="Apellidos" required="">
+    
+    <label for="Empresa" class="sr-only">Empresa</label>
+    <input type="text" formControlName="Empresa" class="form-control" placeholder="Empresa" required="">    
+    <br>
+    <button class="btn btn-lg btn-primary btn-block" type="button" (click)="registro()">Regístrate</button>
+    <p class="mt-5 mb-3 text-muted">©2019</p>
+</form>

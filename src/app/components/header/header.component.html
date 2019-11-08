@@ -6,5 +6,8 @@
       <a class="p-2 text-dark" href="#">item</a>
       <a class="p-2 text-dark" href="#">item</a>
     </nav>
-    <a [routerLink]="['login']" class="btn btn-outline-primary">Entrar</a>
+    <a [routerLink]="['/login']"  *ngIf="!isLogged" class="btn btn-outline-primary">Entrar</a>
+    <button (click)="this.salir()" *ngIf="isLogged" class="btn btn-outline-primary">Salir</button>
+    <button (click)="this.test()" class="btn btn-outline-primary">TEST</button>
   </div> 
+  <div>Usuario es {{userData}}</div>
