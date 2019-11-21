@@ -13,10 +13,11 @@ import { LoginComponent } from './components/login/login.component';
 import { UserComponent } from './components/user/user.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { SearchComponent } from './components/search/search.component';
-import { HeaderComponent } from './components/header/header.component';
+// import { HeaderComponent } from './components/header/header.component';
 import { PortadaComponent } from './components/portada/portada.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     UserComponent,
     MenuComponent,
     SearchComponent,
-    HeaderComponent,
+    // HeaderComponent,
     PortadaComponent,
     RegisterComponent,
     DashboardComponent
@@ -36,6 +37,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
+
   ],
   providers: [ApiService,
     UserService],

@@ -1,1 +1,17 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5  class="my-0 mr-md-auto font-weight-normal"><a [routerLink]="['/']">MPDL</a></h5>
+   <nav class="my-2 my-md-0 mr-md-3">
+     <a class="p-2 text-dark" href="#">item</a>
+     <a class="p-2 text-dark" href="#">item</a>
+     <a class="p-2 text-dark" href="#">item</a>
+     <a class="p-2 text-dark" href="#">item</a>
+   </nav>
+   <a [routerLink]="['/login']"  *ngIf="!userData.isLogged" class="btn btn-outline-primary">Entrar</a>
+   <a class="p-2 text-dark" [routerLink]="['/user']" *ngIf="userData.isLogged">Perfil</a>
+   <button (click)="this.salir()" *ngIf="userData.isLogged" class="btn btn-outline-primary">Salir</button>
+   <!-- <button (click)="this.test()" class="btn btn-outline-primary">TEST</button> -->
+ </div>
+<div>
+ <!-- Token: {{userData.Token}} - Nombre: {{userData.Nombre}} - Apellidos: {{userData.Apellidos}} - Email: {{userData.Email}} - Empresa: {{userData.Empresa}} - isLogged: {{userData.isLogged}} -->
+</div>
 <router-outlet></router-outlet>

@@ -6,3 +6,9 @@ export interface Usuario {
     Empresa: String,
     isLogged: boolean
 }
+
+export interface LoginResponse {
+  success: boolean,
+  userario: Usuario,
+  token: string
+}

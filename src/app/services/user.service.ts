@@ -1,34 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../others/interfaces';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  public userData: Usuario = <Usuario> { Token: null, Nombre: null, Apellidos: null, Email: null, Empresa: null};
-  public userToken: any;
+  public globalData = new BehaviorSubject<any>('');
+  public startData = { Token: null, Nombre: 'nombre', Apellidos: 'apellidos', Email: null, Empresa: null, isLogged: false} as Usuario;
+  //
+  // public userData: Usuario = null as Usuario;
+  // console.log("GLOBALDATA", this.globalData);
 
-  constructor() { }
-
-  public getUserToken(){
-    console.log("Recupero el token", this.userToken);
-    return this.userToken;
+  constructor() {
+    this.globalData.next(this.startData);
+    // console.log('GLOBALDATA', this.globalData);
   }
 
-  public setUserToken(token){
-    this.userToken = token;
-    console.log("Guardo el token", this.userToken);
+  public getUserData(): Observable<Usuario> {
+    // console.log(this.globalData);
+    return this.globalData.asObservable();
   }
 
-  public getUserData(){
-    console.log(this.userData);
-    return this.userData;    
-  }
-
-  public setUserData(data){
-    console.log(data);    
-    this.userData = data;    
-    console.log(this.userData);    
+  public setUserData(data: Usuario)  {
+    // console.log(data);
+    this.globalData.next(data);
+    // console.log(this.globalData);
   }
 }
