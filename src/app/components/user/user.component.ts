@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 // SERVICIOS
 import { UserService } from '../../services/user.service';
 import { ApiService } from '../../services/api.service';
+
+// MODELOS
 import { Usuario } from 'src/app/others/interfaces';
 
 
@@ -15,11 +17,16 @@ import { Usuario } from 'src/app/others/interfaces';
 })
 export class UserComponent implements OnInit {
 
-  public userData: Usuario = null;
+  public userData: Usuario;
 
   constructor(private apiService: ApiService, private userService: UserService, private router: Router) {
-    userService.getUserData().subscribe(userData => this.userData = userData);
-    if (this.userData.Token === null) { this.router.navigate(['/login']); }
+    userService.getUserDataObs().subscribe(userData => this.userData = userData);
+    console.log(this.userData);
+
+    if (this.userData.Token === 'empty') {
+      this.router.navigate(['/login']);
+      console.log('Usuario no logeado');
+    }
   }
 
   ngOnInit() {

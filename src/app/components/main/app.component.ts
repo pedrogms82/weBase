@@ -24,8 +24,8 @@ export class AppComponent {
 
   // Creamos suscripcion a datos de usuario
   constructor(private apiServide: ApiService, private userService: UserService, private router: Router) {
-    userService.getUserData().subscribe(userData => this.userData = userData);
-      }
+    userService.getUserDataObs().subscribe(userData => this.userData = userData);
+        }
 
   public salir() {
      this.userData =  { Token: 'id', Nombre: 'nombre', Apellidos: 'apellidos', Email: null, Empresa: null, isLogged: false} as Usuario;

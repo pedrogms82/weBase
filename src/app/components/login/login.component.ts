@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   public datosLogin: any;
   // public userObj =  { Token: null, Nombre: null, Apellidos: null, Email: null, Empresa: null};
-  public userData: Usuario = { Token: null, Nombre: null, Apellidos: null, Email: null, Empresa: null} as Usuario;
+  // public userData: Usuario = { Token: null, Nombre: null, Apellidos: null, Email: null, Empresa: null} as Usuario;
+  public userData: Usuario;
 
     constructor(
     // tslint:disable-next-line: variable-name
@@ -45,9 +46,41 @@ export class LoginComponent implements OnInit {
           .subscribe(
             result => {
               this.userData = result as Usuario;
-              // console.log('UserData', this.userData);
+              let pepe: Usuario;
+              console.log('UserData', this.userData);
               // tslint:disable-next-line: no-unused-expression
               this._userService.setUserData(this.userData);
+              this._userService.getUserDataObs().subscribe(userData => pepe = userData);
+              console.log('Veamos que hay this.userdata', this.userData);
+              console.log('Veamos que hay pepe', pepe);
+
+              this.router.navigate(['/dashboard']);
+            },
+            error => {
+              console.log('Error', error);
+            }
+          );
+  }
+  public loginCapi() {
+
+    let datosForm = '';
+    datosForm =  datosForm + '&email=capi@mpdl.org';
+    datosForm =  datosForm + '&pass=kolera';
+
+    this._apiService.login(datosForm)
+          .subscribe(
+            result => {
+              this.userData = result as Usuario;
+              let pepe: Usuario;
+              let pepeObs: Usuario;
+              console.log('UserData', this.userData);
+              // tslint:disable-next-line: no-unused-expression
+              this._userService.setUserData(this.userData);
+              pepe = this._userService.getUserData();
+              this._userService.getUserDataObs().subscribe(userData => pepeObs = userData);
+              console.log('Veamos que hay en pepe', pepe);
+              console.log('Veamos que hay en Pepe Obs', pepe);
+
               this.router.navigate(['/dashboard']);
             },
             error => {
